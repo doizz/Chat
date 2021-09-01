@@ -2,6 +2,11 @@ package com.doizz.chating.handler;
 
 import java.util.HashMap;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -29,11 +34,16 @@ public class SocketHandler extends TextWebSocketHandler {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		//소켓 연결
 		super.afterConnectionEstablished(session);
 		sessionMap.put(session.getId(), session);
+		JSONObject obj = new JSONObject();
+		obj.put("type", "getId");
+		obj.put("sessionId", session.getId());
+		session.sendMessage(new TextMessage(obj.toJSONString()));
 	}
 	
 	@Override
@@ -41,5 +51,16 @@ public class SocketHandler extends TextWebSocketHandler {
 		//소켓 종료
 		sessionMap.remove(session.getId());
 		super.afterConnectionClosed(session, status);
+	}
+	
+	private static JSONObject JsonToObjectParser(String jsonStr) {
+		JSONParser parser = new JSONParser();
+		JSONObject obj = null;
+		try {
+			obj = (JSONObject) parser.parse(jsonStr);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return obj;
 	}
 }
