@@ -61,6 +61,7 @@
 		}
 		
 		ws.onmessage = function(data) {
+			console.log(data);
 			//메시지를 받으면 동작
 			var msg = data.data;
 			if(msg != null && msg.trim() != ''){
