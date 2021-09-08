@@ -75,8 +75,11 @@
 
 <script type="text/javascript">
 	var ws;
+	
 	window.onload = function(){
+		//세션에 저장되어있는 방을 불러와서 화면에 표출한다.
 		getRoom();
+		//방만들기 클릭시 새로운 채팅방을 생성한다.
 		createRoom();
 	}
 
@@ -99,6 +102,7 @@
 	}
 
 	function goRoom(number, name){
+		//해당하는 roomnumber를 가지고 해당하는 방으로 이동한다.
 		location.href="/moveChating?roomName="+name+"&"+"roomNumber="+number;
 	}
 

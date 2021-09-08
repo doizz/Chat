@@ -143,7 +143,7 @@
 				userName : $("#userName").val()
 			}
 			ws.send(JSON.stringify(param)); //파일 보내기전 메시지를 보내서 파일을 보냄을 명시한다.
-
+			
 		    arrayBuffer = this.result;
 			ws.send(arrayBuffer); //파일 소켓 전송
 		};
@@ -153,12 +153,13 @@
 <body>
 	<div id="container" class="container">
 		<h1>${roomName}의 채팅방</h1>
+		<!-- 사용자의 세션 아이디를 저장 -->
 		<input type="hidden" id="sessionId" value="">
 		<input type="hidden" id="roomNumber" value="${roomNumber}">
 		
 		<div id="chating" class="chating">
 		</div>
-		
+		<!-- 이름을 등록후 채팅방으로 바로 이동함. -->
 		<div id="yourName">
 			<table class="inputTable">
 				<tr>
