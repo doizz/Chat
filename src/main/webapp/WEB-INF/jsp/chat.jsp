@@ -93,7 +93,7 @@
 					console.warn("unknown type!")
 				}
 			}else{
-				//파일 업로드한 경우 업로드한 파일을 채팅방에 뿌려준다.
+				//파일 업로드한 경우 업로드한 파일을 채팅방에 뿌려준다.  
 				var url = URL.createObjectURL(new Blob([msg]));
 				$("#chating").append("<div class='img'><img class='msgImg' src="+url+"></div><div class='clearBoth'></div>");
 			}
