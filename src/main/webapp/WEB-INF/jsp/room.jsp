@@ -88,7 +88,7 @@
 			createChatingRoom(result);
 		});
 	}
-	
+	//룸을 생성한다.
 	function createRoom(){
 		$("#createRoom").click(function(){
 			var msg = {	roomName : $('#roomName').val()	};
